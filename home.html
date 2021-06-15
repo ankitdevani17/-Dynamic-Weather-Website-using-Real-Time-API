@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Forecast</title>
+    <meta name="description" content=""><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div class ="box">
+    <div class ="wave -one"></div>
+    <div class ="wave -two"></div>
+    <div class ="wave -three"></div>
+
+    <div id =weathercon><i class="fas fa-sun"  style="color: #eccc68;"></i>
+    </div> 
+    <div id = "info">
+        <h2 class ="location"><i class="fas fa-street-view"></i>Pune India</h2>
+
+        <p id = "date"> Sun \ 15 July \ 10:40 AM </p>
+        <h1 class = "temp">23.49 C</h1>
+        <h3 class = "tempmin_max">Min 23.49 C | Max 29.78 C</h3>
+    </div>
+</div>
+<script>
+     const curDate = document.getElementById("date");
+     let weathercon = document.getElementById("weathercon");
+     const tempStatus = "Clouds";
+     const getCurrentDay = () =>{
+         var weekday = new Array(7);
+         weekday[0] ="Sunday";
+         weekday[1] ="Monday";
+         weekday[2] ="Tuesday";
+         weekday[3] ="Wednesday";
+         weekday[4] ="Thursday";
+         weekday[5] ="Friday";
+         weekday[6] ="Saturday";
+
+         let currentTime = new Date();
+         console.log(weekday[currentTime.getDay()]);
+     };
+
+     const getCurrentTime = () => {
+     var months =[
+         "Jan",
+         "Feb",
+         "Mar",
+         "Apr",
+         "May",
+         "Jun",
+         "July",
+         "Aug",
+         "Sept",
+         "Oct",
+         "Nov",
+         "Dec",
+     ];
+     var now = new Date();
+     var month = months[now.getMonth() + 1];
+     var day = now.getDay();
+     console.log(month + day);
+     };
+</script>
+</body>
+</html>
