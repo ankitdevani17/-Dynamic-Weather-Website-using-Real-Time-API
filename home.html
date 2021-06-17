@@ -17,18 +17,18 @@
     <div id =weathercon><i class="fas fa-sun"  style="color: #eccc68;"></i>
     </div> 
     <div id = "info">
-        <h2 class ="location"><i class="fas fa-street-view"></i>Pune India</h2>
+        <h2 class ="location"><i class="fas fa-street-view"></i>{% location %}, {% country %}</h2>
 
-        <p id = "date"> Sun \ 15 July \ 10:40 AM </p>
-        <h1 class = "temp">23.49 C</h1>
-        <h3 class = "tempmin_max">Min 23.49 C | Max 29.78 C</h3>
+        <p id = "date"> Mon \ 15 July \ 10:40 AM </p>
+        <h1 class = "temp">{% tempval %}</h1>
+        <h3 class = "tempmin_max">Min {% tempmin %}| Max {% tempmax %}</h3>
     </div>
 </div>
 <script>
      const curDate = document.getElementById("date");
      let weathercon = document.getElementById("weathercon");
      const tempStatus = "Clouds";
-     const getCurrentDay = () =>{
+     const getCurrentDay = () => {
          var weekday = new Array(7);
          weekday[0] ="Sunday";
          weekday[1] ="Monday";
@@ -39,9 +39,10 @@
          weekday[6] ="Saturday";
 
          let currentTime = new Date();
-         console.log(weekday[currentTime.getDay()]);
+         let day = (weekday[currentTime.getDay()]);
+         return day; 
      };
-
+ 
      const getCurrentTime = () => {
      var months =[
          "Jan",
@@ -59,9 +60,25 @@
      ];
      var now = new Date();
      var month = months[now.getMonth() + 1];
-     var day = now.getDay();
-     console.log(month + day);
-     };
+     var date = now.getDate();
+
+     let hours = now.getHours();
+     let mins = now.getMinutes();
+    
+    
+     let periods ="AM";
+     if (hours>11){
+         periods ="PM";
+         if(hours > 12){
+             hours -=12;
+         }
+     }
+     if(mins <10){
+         mins = "0"+mins;
+     }
+     return `${month}  ${date} | ${hours}:${mins} ${periods}` };
+    curDate.innerHTML = getCurrentDay()+" " + "| " + getCurrentTime();
+
 </script>
 </body>
 </html>
